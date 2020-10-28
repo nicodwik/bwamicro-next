@@ -5,8 +5,11 @@ import Circle from 'public/images/circle-accent-1.svg'
 import Header from 'src/parts/Header'
 import Hero from 'src/parts/Hero'
 import Client from 'src/parts/Client'
+import ListCourses from 'src/parts/ListCourses'
+import ListCategories from 'src/parts/ListCategories'
+import Footer from 'src/parts/Footer'
 
-function Home(props) {
+function Home({data}) {
   
   return (
     <>
@@ -25,6 +28,15 @@ function Home(props) {
         </section>
         <section className='container mx-auto pt-24'>
           <Client></Client>
+        </section>
+        <section className='container mx-auto pt-24'>
+          <ListCourses data={data}></ListCourses>
+        </section>
+        <section className="container mx-auto pt-24">
+          <ListCategories data={data}></ListCategories>
+        </section>
+        <section className="mt-24 bg-indigo-1000 py-12">
+          <Footer></Footer>
         </section>
       </main>
     </>

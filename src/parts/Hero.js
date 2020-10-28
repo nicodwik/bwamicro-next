@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function Hero() {
-    function onSubmit() {
+    const [state, setstate] = useState(() => {""})
 
+    function onSubmit() {
+        window.open(`${process.env.NEXT_PUBLIC_BASE_URL}/register?email=${state}`)
     }
     return (
         <div className='flex justify-center items-center'>
@@ -16,6 +18,8 @@ export default function Hero() {
                 </p>
                 <form onSubmit={onSubmit}>
                     <input type="text" className='bg-white focus:outline-none border-0 px-6 py-3 w1/2'
+                    onChange={(event) => setstate(event.target.value)}
+                    value={state}
                     placeholder='Your Email Address'/>
                     <button className='bg-orange-500 hover:bg-orange-500 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3'>
                         Daftar Now
