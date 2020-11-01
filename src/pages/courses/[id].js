@@ -4,6 +4,7 @@ import courses from 'src/constans/api/courses'
 import Youtube from 'react-youtube'
 import Header from 'src/parts/Header'
 import Feature from 'src/parts/Details/Feature'
+import CoursePhoto from 'src/parts/Details/CoursePhoto'
 import {CSSTransition} from 'react-transition-group'
 import formatThousand from 'src/helpers/formatThousand' 
 import Footer from 'src/parts/Footer'
@@ -21,7 +22,6 @@ export default function DetailCourse({data}) {
     useEffect(() => {
         const stickyOffestTop = footer.current.getBoundingClientRect().top
         const stickyMetaToogler = () => {
-            console.log(stickyOffestTop, window.pageYOffset, window.innerHeight)
             setIsSticky(stickyOffestTop >= window.pageYOffset + window.innerHeight)
         }
 
@@ -124,6 +124,18 @@ export default function DetailCourse({data}) {
                         <p className="text-gray-600 text-lg leading-relaxed mb-3">
                             {data?.description ?? "No Description Found"}
                         </p>
+                    </section>
+                    <section className="mt-10">
+                        <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                            About <span className="text-teal-500">Photos</span>
+                        </h6>
+                        <div className="flex justify-start items-center -mx-4 mt-6">
+                            {
+                                data?.images?.length > 0 ? 
+                                data?.images?.map?.((photo,index) => <CoursePhoto data={photo.image} key={index}/>) : 
+                                <div className="w-full text-center py-12">No Item Found</div>
+                            }
+                        </div>
                     </section>
                 </div>
             </div>

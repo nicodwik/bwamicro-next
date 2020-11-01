@@ -18,7 +18,8 @@
     "react-dom": "16.14.0",
     "react-toastify": "^6.0.9",
     "react-transition-group": "^4.4.1",
-    "react-youtube": "^7.13.0"
+    "react-youtube": "^7.13.0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.4",
