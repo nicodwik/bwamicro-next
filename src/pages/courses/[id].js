@@ -8,6 +8,9 @@ import CoursePhoto from 'src/parts/Details/CoursePhoto'
 import {CSSTransition} from 'react-transition-group'
 import formatThousand from 'src/helpers/formatThousand' 
 import Footer from 'src/parts/Footer'
+import RenderPreview from 'src/parts/Details/RenderPreview'
+import HappyStudent from 'src/parts/Details/HappyStudent'
+
 
 //public images
 import Student from 'public/images/icon-student.svg'
@@ -16,7 +19,6 @@ import Certificate from 'public/images/icon-certificate.svg'
 
 export default function DetailCourse({data}) {
     console.log(data)
-
     const footer = useRef(null)
     const [isSticky, setIsSticky] = useState(() => true)
     useEffect(() => {
@@ -127,7 +129,7 @@ export default function DetailCourse({data}) {
                     </section>
                     <section className="mt-10">
                         <h6 className="font-medium text-gray-900 text-2xl mb-4">
-                            About <span className="text-teal-500">Photos</span>
+                            Course <span className="text-teal-500">Photos</span>
                         </h6>
                         <div className="flex justify-start items-center -mx-4 mt-6">
                             {
@@ -137,9 +139,40 @@ export default function DetailCourse({data}) {
                             }
                         </div>
                     </section>
+                    <section className="mt-10">
+                        <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                            You Will <span className="text-teal-500">Learn</span>
+                        </h6>
+                        {
+                            data?.chapters?.length > 0 ?
+                            <RenderPreview previews={data.chapters}></RenderPreview> : 
+                            <div className="w-full text-center py-12">No Chapters Found</div>
+                        }
+                    </section>
+                    <section className="mt-10 w-2/3">
+                        <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                            Our <span className="text-teal-500">Instructor</span>
+                        </h6>
+                        <div className="flex items-center">
+                            <img src={data?.mentor?.profile ?? ""} alt={data?.mentor?.name} className="w-20 h-20 rounded-full overflow-hidden object-cover"/>
+                            <div className="ml-4">
+                                <h2 className="text-lg text-gray-900">{data?.mentor?.name ?? "Mentor's Name"}</h2>
+                                <h3 className="text-sm text-gray-600">{data?.mentor?.profession ?? "Mentor's Profession"} </h3>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="mt-10 w-1/2">
+                        <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                            Happy <span className="text-teal-500">Student</span>
+                        </h6>
+                        {
+                            data?.reviews?.map?.((testimonial, index) => {
+                                return <HappyStudent key={index} data={testimonial}></HappyStudent>
+                            })
+                        }
+                    </section>
                 </div>
             </div>
-            <div style={{height: 2000}}></div>
             <section className="mt-24 bg-indigo-1000 py-12" ref={footer}>
                 <Footer></Footer>
             </section>
