@@ -9,7 +9,7 @@ import ListCourses from 'src/parts/ListCourses'
 import ListCategories from 'src/parts/ListCategories'
 import Footer from 'src/parts/Footer'
 
-import courses from 'src/constans/api/courses'
+import courses from 'src/constants/api/courses'
 
 function Home({data}) {
   

@@ -1,6 +1,6 @@
 import {useRef, useState, useEffect} from 'react'
 import Head from 'next/head'
-import courses from 'src/constans/api/courses'
+import courses from 'src/constants/api/courses'
 import Youtube from 'react-youtube'
 import Header from 'src/parts/Header'
 import Feature from 'src/parts/Details/Feature'
